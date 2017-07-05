@@ -1,0 +1,14 @@
+﻿{
+    "manifest_version": 2,
+    "name": "第一科大Wifi登入",
+    "description": "當頁面跳轉至Wifi登入畫面時，自動帶入帳號密碼登入",
+    "version": "1.0.0",
+    "author": "Xu, Pei-Yao",
+    "content_scripts": [{
+        "matches": ["http://securelogin.nkfust.edu.tw/upload/custom/nkfust-cp/*"],
+        "js": ["js.cookie.js","main.js"]
+    }],
+    "permissions": [
+        "storage","tabs"
+    ]
+}
