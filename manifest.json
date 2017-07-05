@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "author": "Xu, Pei-Yao",
     "content_scripts": [{
-        "matches": ["http://securelogin.nkfust.edu.tw/upload/custom/nkfust-cp/*"],
+        "matches": ["https://securelogin.nkfust.edu.tw/upload/custom/nkfust-cp/*"],
         "js": ["js.cookie.js","main.js"]
     }],
     "permissions": [
