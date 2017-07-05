@@ -6,7 +6,6 @@ declare var chrome:any,Cookies:any;
 function loadUserInfo(){
     var id = Cookies.get('userId');
     var password = Cookies.get('userPassword');
-    if(!id)return null;
     return {
         user: id,
         password: password
@@ -25,17 +24,16 @@ function saveUserInfo(userInfo:UserInfo){
 
     var error = document.getElementById("errorbox");
     var userInfo = await loadUserInfo();
-    if(!userInfo || error){//init
-        userInfo = {user:null,password:null};
-        userInfo.user = window.prompt("請輸入帳號");
-        userInfo.password = window.prompt("請輸入密碼");
+    if(!userInfo.user || error){//init
+        userInfo.user = window.prompt("請輸入帳號",userInfo.user);
+        userInfo.password = window.prompt("請輸入密碼",userInfo.password);
 
         saveUserInfo(userInfo);
     }
     
     userInput.value = userInfo.user;
     passwordInput.value = userInfo.password;
-    
+
     if(error)return;
 
     form.submit();

@@ -37,8 +37,6 @@ var _this = this;
 function loadUserInfo() {
     var id = Cookies.get('userId');
     var password = Cookies.get('userPassword');
-    if (!id)
-        return null;
     return {
         user: id,
         password: password
@@ -62,10 +60,9 @@ function saveUserInfo(userInfo) {
                 return [4 /*yield*/, loadUserInfo()];
             case 1:
                 userInfo = _a.sent();
-                if (!userInfo || error) {
-                    userInfo = { user: null, password: null };
-                    userInfo.user = window.prompt("請輸入帳號");
-                    userInfo.password = window.prompt("請輸入密碼");
+                if (!userInfo.user || error) {
+                    userInfo.user = window.prompt("請輸入帳號", userInfo.user);
+                    userInfo.password = window.prompt("請輸入密碼", userInfo.password);
                     saveUserInfo(userInfo);
                 }
                 userInput.value = userInfo.user;
